@@ -3,6 +3,7 @@ using namespace std;
 
 //with any five dimension values from the user for example [1,1] [4,10] 10,7] [15,3] [20,18] .
 //Check the region covered by these points in the matrix.
+
 //Calculate the boundary by either considering all points or ignoring few points which may not come on boundary [convex hull]. 
 //Find sum of elements in the region.
 
@@ -12,11 +13,11 @@ bool comparison(pair<int, int>& a,pair<int, int>& b){
     }
     return a.first < b.first;
 }
-int comp1(pair<int, int>& a,pair<int, int>& b,pair<int, int>& c){
+int comparison1(pair<int, int>& a,pair<int, int>& b,pair<int, int>& c){
     int p = a.first * (b.second - c.second)+ b.first * (c.second - a.second)+ c.first * (a.second - b.second);
     return p < 0ll;
 }
-int comp2(pair<int, int>& a,pair<int, int>& b,pair<int, int>& c){
+int comparison2(pair<int, int>& a,pair<int, int>& b,pair<int, int>& c){
     int p = a.first * (b.second - c.second)+ b.first * (c.second - a.second)+ c.first * (a.second - b.second);
     return p > 0ll;
 }
@@ -32,15 +33,15 @@ vector<pair<int, int> > convexHull(vector<pair<int, int> >& v){
     up.push_back(p1);
     down.push_back(p1);
     for (int i = 1; i < n; i++) {
-        if (i == n - 1 || !comp2(p1, v[i], p2)) {
-            while (up.size() > 1&& comp2(up[up.size() - 2],up[up.size() - 1],v[i])) {
+        if (i == n - 1 || !comparison2(p1, v[i], p2)) {
+            while (up.size() > 1&& comparison2(up[up.size() - 2],up[up.size() - 1],v[i])) {
                 up.pop_back();
             }
             up.push_back(v[i]);
         }
-        if (i == n - 1 || !comp1(p1, v[i], p2)) {
+        if (i == n - 1 || !comparison1(p1, v[i], p2)) {
   
-            while (down.size() > 1&& comp1(down[down.size() - 2],down[down.size() - 1],v[i])) {
+            while (down.size() > 1&& comparison1(down[down.size() - 2],down[down.size() - 1],v[i])) {
                 down.pop_back();
             }
             down.push_back(v[i]);
@@ -71,6 +72,7 @@ int main()
   for(int a=0;a<m;a++){
     for(int b=0;b<m;b++){
         matrix[a][b]=rand()%10;
+       
     }
   }
 
