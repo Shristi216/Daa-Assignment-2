@@ -51,6 +51,8 @@ If the point lies inside the Convex Hull then we will be adding the value inside
 
 ![area shaded](https://user-images.githubusercontent.com/91418248/193194416-35cc572d-f412-4e65-8d01-8fbce7ae81f1.jpg)
 
+Now the convex hull is created.
+
 
 
 
